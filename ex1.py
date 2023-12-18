@@ -19,7 +19,7 @@ def cit_mat(n): #citirea matricei
 
 def ver_triung(mat): #verifică dacă matricea este triunghiulară superior
     sf = True
-    sup = np.triu(mat, 1) #aflăm triunghiul de sub diagonaleo matricii
+    sup = np.triu(mat, 1) #aflăm triunghiul de sub diagonale matricii
     inf = np.tril(mat, -1) #aflăm triunghiul de deaspupra diagonaleo matricii
     if np.count_nonzero(sup) != 0 and np.count_nonzero(inf) != 0: #verificăm dacă triunghiul de sub digonal este doar 0
         sf = False
