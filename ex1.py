@@ -1,5 +1,6 @@
 #1) Verificați dacă inversa unei matrici triunghiulare este tot
 #triunghiulară. 
+# IDE: https://trinket.io/embed/python3/a5bd54189b
 
 import numpy as np
 import sys

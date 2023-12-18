@@ -2,6 +2,8 @@
 #sau 3, afișând polinomul caracteristic asociat. 
 
 import numpy as np
+import sympy as sym
+from sympy import *
 import sys
 
 
@@ -17,6 +19,15 @@ def cit_mat(n): #citirea matricei
         mat.append(a)
 
     return mat
+
+def pol_asoc(mat, n):
+    l = sym.Symbol('l')
+    for i in range(n):
+        mat[i][i] -= l
+
+    matr = sym.Matrix(mat)
+    print("\nPolinomul caracteristic:\n",matr.det()," = 0")
+    return
 
 def calc_val_proprii(mat):
     return np.linalg.eigvals(mat)
@@ -34,3 +45,4 @@ if __name__ == "__main__":
     print("\nMatricea este:\n", '\n'.join(['\t'.join([str(val) for val in linie]) for linie in mat]))
 
     print("Valorile proprii sunt: ", calc_val_proprii(mat))
+    pol_asoc(mat,n)
