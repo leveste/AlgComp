@@ -9,6 +9,7 @@ def cit_mat(n): #citirea matricei
 
     print("Introduceți valorile matricii!")
     for linie in range(n):
+        print("Rândul: ", linie+1)
         a = []
         for col in range(n):
             a.append(int(input()))
@@ -16,18 +17,11 @@ def cit_mat(n): #citirea matricei
 
     return mat
 
-def ver_triung_sup(mat): #verifică dacă matricea este triunghiulară superior
+def ver_triung(mat): #verifică dacă matricea este triunghiulară superior
     sf = True
     sup = np.triu(mat, 1) #aflăm triunghiul de sub diagonaleo matricii
-    if np.count_nonzero(sup) != 0: #verificăm dacă triunghiul de sub digonal este doar 0
-        sf = False
-
-    return sf
-
-def ver_triung_inf(mat): #verifică dacă matricea este triunghiulară inferior
-    sf = True
     inf = np.tril(mat, -1) #aflăm triunghiul de deaspupra diagonaleo matricii
-    if np.count_nonzero(inf) != 0: #verificăm dacă triunghiul de deasupra digonalei este doar 0
+    if np.count_nonzero(sup) != 0 and np.count_nonzero(inf) != 0: #verificăm dacă triunghiul de sub digonal este doar 0
         sf = False
 
     return sf
@@ -47,7 +41,7 @@ if __name__ == "__main__":
 
     print("\nMatricea este:\n", '\n'.join(['\t'.join([str(val) for val in linie]) for linie in mat]))
 
-    if not(ver_triung_sup(mat)) and not(ver_triung_inf(mat)):
+    if not(ver_triung(mat)):
         print("Matricea dată nu este triunghiulară!")
         sys.exit(0)
 
@@ -55,7 +49,7 @@ if __name__ == "__main__":
     invMat = inv_matrice(mat)
     print("\nInversa matricii este:\n", '\n'.join(['\t'.join([str(round(val,2)) for val in linie]) for linie in inv_matrice(invMat)]))
 
-    if ver_triung_inf(invMat) == True:
-        print("Matricea inversă este triunghiulară inferior!")
-    elif ver_triung_sup(invMat) == True:
-        print("Matricea inversă este triunghiulară superior!")
+    if ver_triung(invMat) == True:
+        print("Matricea inversă este triunghiulară!")
+    else:
+        print("Matricea inversă nu este triunghiulară!")
