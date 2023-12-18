@@ -26,7 +26,7 @@ def pol_asoc(mat, n):
         mat[i][i] -= l
 
     matr = sym.Matrix(mat)
-    print("\nPolinomul caracteristic:\n",matr.det()," = 0")
+    print("\nPolinomul caracteristic:\n",matr.det())
     return
 
 def calc_val_proprii(mat):
