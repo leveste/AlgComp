@@ -18,12 +18,14 @@ def cit_mat(n): #citirea matricei
 
     return mat
 
+def calc_val_proprii(mat):
+    return np.linalg.eigvals(mat)
 
 if __name__ == "__main__":
     n=int(input("Introduceți mărimea matricii: "))
 
-    if (n<=1) or not(isinstance(n, int)):
-        print("Mărimea matricii nu e validă. Trebuie să fie un număr natural, mai mare de 1.")
+    if not n in [2,3] or not(isinstance(n, int)):
+        print("Mărimea matricii nu e validă. Matricea trebuie să fie de ordinul 2 sau 3.")
         sys.exit(0)
 
     mat = cit_mat(n)
@@ -31,3 +33,4 @@ if __name__ == "__main__":
 
     print("\nMatricea este:\n", '\n'.join(['\t'.join([str(val) for val in linie]) for linie in mat]))
 
+    print("Valorile proprii sunt: ", calc_val_proprii(mat))
